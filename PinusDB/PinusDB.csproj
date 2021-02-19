@@ -5,6 +5,16 @@
     <Version>1.0.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/maikebing/PinusDB.Data</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>为国产松果时序数据库(pinusdb)实现的标准ADO.Net 的数据访问接口。</Description>
+    <Authors>maikebing</Authors>
+    <Product>PinusDB.Data</Product>
+    <Copyright>Copyright  2021  maikebing</Copyright>
+    <RepositoryUrl>https://github.com/maikebing/PinusDB.Data</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>PinusDB</PackageTags>
+    <PackageReleaseNotes>为国产松果时序数据库(pinusdb)实现的标准ADO.Net 的数据访问接口。</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
