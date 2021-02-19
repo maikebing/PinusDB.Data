@@ -1,12 +1,10 @@
 ---
- 
----
 
 # PinusDB.Data
 
-Îª¹ú²úËÉ¹ûÊ±ĞòÊı¾İ¿â(pinusdb)ÊµÏÖµÄ±ê×¼ADO.Net µÄÊı¾İ·ÃÎÊ½Ó¿Ú¡£ 
+ä¸ºå›½äº§æ¾æœæ—¶åºæ•°æ®åº“(pinusdb)å®ç°çš„æ ‡å‡†ADO.Net çš„æ•°æ®è®¿é—®æ¥å£ã€‚ 
 
-PinusDB.Data ²»Í¬ÓÚ[¹Ù·½Ìá¹©µÄ .Net SDK](https://gitee.com/pinusdb/pinusdb/blob/master/doc/pinusdb_dotnet_sdk.md)  , ±¾¿â·ûºÏADO.Net±ê×¼¡£
+PinusDB.Data ä¸åŒäº[å®˜æ–¹æä¾›çš„ .Net SDK](https://gitee.com/pinusdb/pinusdb/blob/master/doc/pinusdb_dotnet_sdk.md)  , æœ¬åº“ç¬¦åˆADO.Netæ ‡å‡†ã€‚
 
 
 ---
@@ -14,13 +12,13 @@ PinusDB.Data ²»Í¬ÓÚ[¹Ù·½Ìá¹©µÄ .Net SDK](https://gitee.com/pinusdb/pinusdb/blob/
 [![Build status](https://ci.appveyor.com/api/projects/status/6t81vxhmm2rpthol?svg=true)](https://ci.appveyor.com/project/MaiKeBing/pinusdb-data)
 [![License](https://img.shields.io/github/license/maikebing/PinusDB.Data.svg)](https://github.com/maikebing/PinusDB.Data/blob/master/LICENSE)
 
-| NuGetÃû³Æ    | °æ±¾|ÏÂÔØÁ¿| ËµÃ÷                                                     |
+| NuGetåç§°    | ç‰ˆæœ¬|ä¸‹è½½é‡| è¯´æ˜                                                     |
 | ----------- | --------  | --------  | ------------------------------------------------------------ |
-| PinusDB.Data |[![PinusDB](https://img.shields.io/nuget/v/PinusDB.svg)](https://www.nuget.org/packages/PinusDB/) |![Nuget](https://img.shields.io/nuget/dt/PinusDB) |ADO.Net Core »ù´¡×é¼ş
-| PinusDB.HealthChecks |[![PinusDB.HealthChecks](https://img.shields.io/nuget/v/PinusDB.HealthChecks.svg)](https://www.nuget.org/packages/PinusDB.HealthChecks/)  |  ![Nuget](https://img.shields.io/nuget/dt/PinusDB.HealthChecks)| ¹©Asp.Net Core Ê¹ÓÃµÄ½¡¿µ¼ì²é×é¼ş
+| PinusDB.Data |[![PinusDB](https://img.shields.io/nuget/v/PinusDB.svg)](https://www.nuget.org/packages/PinusDB/) |![Nuget](https://img.shields.io/nuget/dt/PinusDB) |ADO.Net Core åŸºç¡€ç»„ä»¶
+| PinusDB.HealthChecks |[![PinusDB.HealthChecks](https://img.shields.io/nuget/v/PinusDB.HealthChecks.svg)](https://www.nuget.org/packages/PinusDB.HealthChecks/)  |  ![Nuget](https://img.shields.io/nuget/dt/PinusDB.HealthChecks)| ä¾›Asp.Net Core ä½¿ç”¨çš„å¥åº·æ£€æŸ¥ç»„ä»¶
 
 
-Ê¾ÀıÈçÏÂ:
+ç¤ºä¾‹å¦‚ä¸‹:
 
 ```c#
    var builder = new PinusConnectionStringBuilder()
@@ -33,19 +31,19 @@ PinusDB.Data ²»Í¬ÓÚ[¹Ù·½Ìá¹©µÄ .Net SDK](https://gitee.com/pinusdb/pinusdb/blob/
                 using (var connection = new PinusConnection(builder.ConnectionString))
                 {
                     connection.Open();
-                    Console.WriteLine("´´½¨Ò£²âÊı¾İ±í", connection.CreateCommand(
+                    Console.WriteLine("åˆ›å»ºé¥æµ‹æ•°æ®è¡¨", connection.CreateCommand(
                         @" CREATE TABLE test (  devid bigint,                  tstamp datetime, val01 bool, val02 bigint, val03 double, val04 real2 )").ExecuteNonQuery());
-                    Console.WriteLine("´´½¨Éè±¸", connection.CreateCommand(@"INSERT INTO sys_dev(tabname, devid) VALUES('test',1)").ExecuteNonQuery());
-                    Console.WriteLine("Ìí¼ÓÊı¾İ", connection.CreateCommand(@"INSERT INTO test(devid,tstamp,val01,val02,val03) VALUES(1, now(), true, 1, 1.1111)").ExecuteNonQuery());
+                    Console.WriteLine("åˆ›å»ºè®¾å¤‡", connection.CreateCommand(@"INSERT INTO sys_dev(tabname, devid) VALUES('test',1)").ExecuteNonQuery());
+                    Console.WriteLine("æ·»åŠ æ•°æ®", connection.CreateCommand(@"INSERT INTO test(devid,tstamp,val01,val02,val03) VALUES(1, now(), true, 1, 1.1111)").ExecuteNonQuery());
                     var cmd_select = connection.CreateCommand();
                     cmd_select.CommandText = $"SELECT * FROM test";
                     var reader = cmd_select.ExecuteReader();
                     Console.WriteLine(cmd_select.CommandText);
-                    Console.WriteLine("²éÑ¯Êı¾İ");
+                    Console.WriteLine("æŸ¥è¯¢æ•°æ®");
                     ConsoleTableBuilder.From(reader.ToDataTable()).WithFormat(ConsoleTableBuilderFormat.MarkDown).ExportAndWriteLine();
                     Console.WriteLine("");
-                    Console.WriteLine("É¾³ı±í", connection.CreateCommand($"DROP TABLE test").ExecuteNonQuery());
-                    Console.WriteLine("É¾³ıÉè±¸", connection.CreateCommand($"DELETE FROM sys_dev WHERE tabname='test'").ExecuteNonQuery());
+                    Console.WriteLine("åˆ é™¤è¡¨", connection.CreateCommand($"DROP TABLE test").ExecuteNonQuery());
+                    Console.WriteLine("åˆ é™¤è®¾å¤‡", connection.CreateCommand($"DELETE FROM sys_dev WHERE tabname='test'").ExecuteNonQuery());
                     connection.Close();
                 }
 ```
