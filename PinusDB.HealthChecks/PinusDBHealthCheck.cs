@@ -32,7 +32,7 @@ namespace Maikebing.HealthChecks.Taos
                         if (_sql== PinusDBCheckBuilderExtensions.HEALTH_QUERY)
                         {
                             var _result = Convert.ToInt32(result);
-                            if (_result!=1)
+                            if (_result>=1)
                             {
                                 return new HealthCheckResult(context.Registration.FailureStatus,description:$"Server status:{_result}");
                             }
